@@ -1,8 +1,4 @@
 <?php
 #front controller
-include "vendor/autoload.php";
-
-use App\Core\Request;
-
-$obj1= new Request();
-echo($obj1);
+include __DIR__."/bootstrap/init.php";
+var_dump($_ENV);

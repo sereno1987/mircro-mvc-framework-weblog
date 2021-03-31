@@ -1,7 +1,7 @@
 <?php
 namespace App\Core\Routing;
 use App\Core\Request;
-use mysql_xdevapi\Exception;
+use Exception;
 
 class Router{
     private $request;
@@ -44,7 +44,7 @@ class Router{
     private function dispatch405()
     {
         header($_SERVER["SERVER_PROTOCOL"]." 405 Method Not Allowed", true, 405);
-        echo "Invalid Method! 405";
+        view('errors.405');
         die();
     }
 
@@ -80,7 +80,6 @@ class Router{
         #action:null
         if(is_null($action)|| empty($action))
         {
-            echo "action is null";
             return;
         }
 
@@ -94,7 +93,7 @@ class Router{
         #action: Controller@method
         if(is_string($action))
         {
-            $rt = explode('@',$action);
+            $action = explode('@',$action);
         }
 
         #action: ['Controller','method']

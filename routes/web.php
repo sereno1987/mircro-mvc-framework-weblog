@@ -9,7 +9,7 @@ Route::get('/a');
 Route::get('/d');
 Route::get('/c', ['HomeController','index']);
 Route::get('/archive', ['ArchiveController','index']);
-Route::post('/b', ['HomeController@index']);
+Route::get('/b', 'HomeController@index');
 Route::get('/fun', function (){
 echo "welcome";
 });

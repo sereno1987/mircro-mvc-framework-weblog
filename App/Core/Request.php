@@ -7,15 +7,15 @@ class Request{
     private $agent;
     private $ip;
     private $method;
-    private $queryString;
+    private $uri;
 
     public function __construct()
     {
         $this->params=$_REQUEST;
         $this->agent=$_SERVER['HTTP_USER_AGENT'];
         $this->ip=$_SERVER['REMOTE_ADDR'];
-        $this->method=$_SERVER['REQUEST_METHOD'];
-        $this->queryString=$_SERVER['QUERY_STRING'];
+        $this->method=mb_strtolower($_SERVER['REQUEST_METHOD']);
+        $this->uri=strtok($_SERVER['REQUEST_URI'], '?');
 
     }
 
@@ -56,9 +56,9 @@ class Request{
 //        die();
 //    }
 
-    public function getQueryString(): mixed
+    public function getUri(): mixed
     {
-        return $this->queryString;
+        return $this->uri;
     }
 
     public function __get(string $param)

@@ -4,7 +4,16 @@ namespace App\Controllers;
 
      public function index()
      {
-         echo "hi from archive controller";
-         
+         view('archive.index');
+     }
+
+     public function products()
+     {
+         view('archive.products');
+     }
+
+     public function articles()
+     {
+         view('archive.articles');
      }
  }
